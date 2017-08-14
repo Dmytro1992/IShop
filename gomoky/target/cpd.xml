@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+   <duplication lines="41" tokens="265">
+      <file line="60"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="246"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[				for (int i = 0 + j; i < 5 + j; i++) {
+					if (count > 4) {
+						countX = 0;
+						countE = 0;
+						countO = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[l][i] == CellValue.HUMAN.getCell()) {
+						countX++;
+					} else if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}
+					for (int q = 0; q < 5; q++) {
+						if (countO == 4 && countE == 1) {
+							if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+								DefaultGameTable.gameTable[l][i] = CellValue.COMPUTER.getCell();
+								cells[l][i].setText(String.valueOf(DefaultGameTable.gameTable[l][i]));
+								return true;
+							} else {
+								i -= 1;
+							}
+	
+						}
+						if (countX == 4 && countE == 1) {
+							if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+								DefaultGameTable.gameTable[l][i] = CellValue.COMPUTER.getCell();
+								cells[l][i].setText(String.valueOf(DefaultGameTable.gameTable[l][i]));
+								return true;
+							} else {
+								i -= 1;
+							}
+						}
+					}
+					count++;
+				}
+			}
+		}
+		return false;
+	}
+
+	public static boolean compuretThreeRow(JLabel cells[][]) {]]></codefragment>
+   </duplication>
+   <duplication lines="37" tokens="237">
+      <file line="424"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="503"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[	public static boolean computerFourSecondDiagonal(JLabel cells[][]) {
+		int countO = 0;
+		int countE = 0;
+		int countX = 0;
+		int count = 0;
+		int i0 = 0;
+		int i1 = 4;
+		int j0 = 10;
+		int j1 = 14;
+		int q = 0;
+		for (int h = 0; h < 21; h++) {
+			for (int k = 0; k <= q; k++) {
+				if (k == 0) {
+					j1 -= q;
+					i1 -= q;
+				} else if (q >= 1) {
+					j1++;
+					i1++;
+					j0++;
+					i0++;
+				}
+				for (int i = i0, j = j0; i <= i1 && j <= j1; i++, j++) {
+					if (count > 4) {
+						countX = 0;
+						countO = 0;
+						countE = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[i][j] == CellValue.COMPUTER.getCell()) {
+						countO++;
+					} else if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}else if (DefaultGameTable.gameTable[i][j] == CellValue.HUMAN.getCell()) {
+						countX++;
+					}
+					for(int a = 0; a < 5; a++){
+					if (countO == 4 && countE == 1) {]]></codefragment>
+   </duplication>
+   <duplication lines="31" tokens="235">
+      <file line="35"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <file line="68"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <codefragment><![CDATA[			for (int j = 0; j < DefaultConstants.SIZE; j++) {
+				if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+					count = 0;
+				}
+				if (DefaultGameTable.gameTable[i][j] != CellValue.EMPTY.getCell()) {
+					if (DefaultGameTable.gameTable[i][j] != DefaultConstants.ch) {
+						DefaultConstants.ch = DefaultGameTable.gameTable[i][j];
+						count = 1;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+					} else {
+						count++;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+						if (count == 5) {
+							for (int k = 0; k < 5; k++) {
+								int row = DefaultConstants.winCells[k][0];
+								int col = DefaultConstants.winCells[k][1];
+								cells[row][col].setForeground(Color.RED);
+								cells[row][col].setFont(new Font(Font.SERIF, Font.BOLD, 35));
+							}
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	public static boolean findWinnerColumn(JLabel cells[][]) {]]></codefragment>
+   </duplication>
+   <duplication lines="28" tokens="230">
+      <file line="106"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <file line="151"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <codefragment><![CDATA[			for (int i = i0, j = j0; i <= i1 && j <= j1; i++, j++) {
+				if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+					count = 0;
+				}
+				if (DefaultGameTable.gameTable[i][j] != CellValue.EMPTY.getCell()) {
+					if (DefaultGameTable.gameTable[i][j] != DefaultConstants.ch) {
+						DefaultConstants.ch = DefaultGameTable.gameTable[i][j];
+						count = 1;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+					} else {
+						count++;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+						if (count == 5) {
+							for (int k = 0; k < 5; k++) {
+								int row = DefaultConstants.winCells[k][0];
+								int col = DefaultConstants.winCells[k][1];
+								cells[row][col].setForeground(Color.RED);
+								cells[row][col].setFont(new Font(Font.SERIF, Font.BOLD, 35));
+							}
+							return true;
+						}
+					}
+				}
+
+			}
+			if (j0 > 0) {]]></codefragment>
+   </duplication>
+   <duplication lines="26" tokens="229">
+      <file line="35"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <file line="106"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <codefragment><![CDATA[			for (int j = 0; j < DefaultConstants.SIZE; j++) {
+				if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+					count = 0;
+				}
+				if (DefaultGameTable.gameTable[i][j] != CellValue.EMPTY.getCell()) {
+					if (DefaultGameTable.gameTable[i][j] != DefaultConstants.ch) {
+						DefaultConstants.ch = DefaultGameTable.gameTable[i][j];
+						count = 1;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+					} else {
+						count++;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+						if (count == 5) {
+							for (int k = 0; k < 5; k++) {
+								int row = DefaultConstants.winCells[k][0];
+								int col = DefaultConstants.winCells[k][1];
+								cells[row][col].setForeground(Color.RED);
+								cells[row][col].setFont(new Font(Font.SERIF, Font.BOLD, 35));
+							}
+							return true;
+						}
+					}
+				}
+			}]]></codefragment>
+   </duplication>
+   <duplication lines="27" tokens="228">
+      <file line="68"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <file line="106"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <codefragment><![CDATA[			for (int i = 0; i < DefaultConstants.SIZE; i++) {
+
+				if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+					count = 0;
+				}
+				if (DefaultGameTable.gameTable[i][j] != CellValue.EMPTY.getCell()) {
+					if (DefaultGameTable.gameTable[i][j] != DefaultConstants.ch) {
+						DefaultConstants.ch = DefaultGameTable.gameTable[i][j];
+						count = 1;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+					} else {
+						count++;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+						if (count == 5) {
+							for (int k = 0; k < 5; k++) {
+								int row = DefaultConstants.winCells[k][0];
+								int col = DefaultConstants.winCells[k][1];
+								cells[row][col].setForeground(Color.RED);
+								cells[row][col].setFont(new Font(Font.SERIF, Font.BOLD, 35));
+							}
+							return true;
+						}
+					}
+				}
+			}]]></codefragment>
+   </duplication>
+   <duplication lines="26" tokens="227">
+      <file line="35"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <file line="68"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <file line="151"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultWinnerChecker.java"/>
+      <codefragment><![CDATA[			for (int j = 0; j < DefaultConstants.SIZE; j++) {
+				if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+					count = 0;
+				}
+				if (DefaultGameTable.gameTable[i][j] != CellValue.EMPTY.getCell()) {
+					if (DefaultGameTable.gameTable[i][j] != DefaultConstants.ch) {
+						DefaultConstants.ch = DefaultGameTable.gameTable[i][j];
+						count = 1;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+					} else {
+						count++;
+						DefaultConstants.winCells[count - 1][0] = i;
+						DefaultConstants.winCells[count - 1][1] = j;
+						if (count == 5) {
+							for (int k = 0; k < 5; k++) {
+								int row = DefaultConstants.winCells[k][0];
+								int col = DefaultConstants.winCells[k][1];
+								cells[row][col].setForeground(Color.RED);
+								cells[row][col].setFont(new Font(Font.SERIF, Font.BOLD, 35));
+							}
+							return true;
+						}
+					}
+				}
+			}]]></codefragment>
+   </duplication>
+   <duplication lines="35" tokens="220">
+      <file line="580"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="657"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[	public static boolean computerFourFirstDiagonal(JLabel cells[][]) {
+		int countO = 0;
+		int countE = 0;
+		int countX = 0;
+		int count = 0;
+		int i0 = 0;
+		int i1 = 4;
+		int j0 = 4;
+		int j1 = 0;
+		int q = 0;
+		for (int h = 0; h < 21; h++) {
+			for (int k = 0; k <= q; k++) {
+				if (k == 0) {
+					j1 += q;
+					i1 -= q;
+				} else if (q >= 1) {
+					j1--;
+					i1++;
+					j0--;
+					i0++;
+				}
+				for (int i = i0, j = j0; i <= i1 && j >= j1; i++, j--) {
+					if (count > 4) {
+						countO = 0;
+						countE = 0;
+						countX = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[i][j] == CellValue.COMPUTER.getCell()) {
+						countO++;
+					} else if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}else if (DefaultGameTable.gameTable[i][j] == CellValue.HUMAN.getCell()) {
+						countX++;
+					}]]></codefragment>
+   </duplication>
+   <duplication lines="19" tokens="175">
+      <file line="449"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="605"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[						countE = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[i][j] == CellValue.COMPUTER.getCell()) {
+						countO++;
+					} else if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}else if (DefaultGameTable.gameTable[i][j] == CellValue.HUMAN.getCell()) {
+						countX++;
+					}
+					for(int a = 0; a < 5; a++){
+					if (countO == 4 && countE == 1) {
+						if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+							DefaultGameTable.gameTable[i][j] = CellValue.COMPUTER.getCell();
+							cells[i][j].setText(String.valueOf(DefaultGameTable.gameTable[i][j]));
+							return true;
+						}else{
+							i--;
+							j--;]]></codefragment>
+   </duplication>
+   <duplication lines="20" tokens="164">
+      <file line="107"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="292"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[				for (int i = 0 + j; i < 5 + j; i++) {
+					if (count > 4) {
+						countX = 0;
+						countE = 0;
+						countO = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[l][i] == CellValue.HUMAN.getCell()) {
+						countX++;
+					} else if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}
+
+					for (int q = 0; q < 5; q++) {
+						if (countO == 3 && countE == 2) {
+							if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+								DefaultGameTable.gameTable[l][i] = CellValue.COMPUTER.getCell();
+								cells[l][i].setText(String.valueOf(DefaultGameTable.gameTable[l][i]));
+								return true;
+							} else {]]></codefragment>
+   </duplication>
+   <duplication lines="19" tokens="164">
+      <file line="156"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="341"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[				for (int i = 0 + j; i < 5 + j; i++) {
+					if (count > 4) {
+						countX = 0;
+						countE = 0;
+						countO = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[l][i] == CellValue.HUMAN.getCell()) {
+						countX++;
+					} else if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}
+					for (int q = 0; q < 5; q++) {
+						if (countO == 2 && countE == 3) {
+							if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+								DefaultGameTable.gameTable[l][i] = CellValue.COMPUTER.getCell();
+								cells[l][i].setText(String.valueOf(DefaultGameTable.gameTable[l][i]));
+								return true;
+							} else {]]></codefragment>
+   </duplication>
+   <duplication lines="19" tokens="164">
+      <file line="201"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="386"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[				for (int i = 0 + j; i < 5 + j; i++) {
+					if (count > 4) {
+						countX = 0;
+						countE = 0;
+						countO = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[l][i] == CellValue.HUMAN.getCell()) {
+						countX++;
+					} else if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}
+					for (int q = 0; q < 5; q++) {
+						if (countO == 1 && countE == 4) {
+							if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+								DefaultGameTable.gameTable[l][i] = CellValue.COMPUTER.getCell();
+								cells[l][i].setText(String.valueOf(DefaultGameTable.gameTable[l][i]));
+								return true;
+							} else {]]></codefragment>
+   </duplication>
+   <duplication lines="21" tokens="156">
+      <file line="53"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="100"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="149"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="194"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[	public static boolean compuretFourRow(JLabel cells[][]) {
+		int countX = 0;
+		int countO = 0;
+		int countE = 0;
+		int count = 0;
+		for (int l = 0; l < DefaultConstants.SIZE; l++) {
+			for (int j = 0; j < 11; j++) {
+				for (int i = 0 + j; i < 5 + j; i++) {
+					if (count > 4) {
+						countX = 0;
+						countE = 0;
+						countO = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[l][i] == CellValue.HUMAN.getCell()) {
+						countX++;
+					} else if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}
+					for (int q = 0; q < 5; q++) {
+						if (countO == 4 && countE == 1) {]]></codefragment>
+   </duplication>
+   <duplication lines="21" tokens="156">
+      <file line="239"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="285"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="334"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="379"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[	public static boolean compuretFourCol(JLabel cells[][]) {
+		int countX = 0;
+		int countO = 0;
+		int countE = 0;
+		int count = 0;
+		for (int i = 0; i < DefaultConstants.SIZE; i++) {
+			for (int j = 0; j < 11; j++) {
+				for (int l = 0 + j; l < 5 + j; l++) {
+					if (count > 4) {
+						countX = 0;
+						countE = 0;
+						countO = 0;
+						count = 0;
+					}
+					if (DefaultGameTable.gameTable[l][i] == CellValue.HUMAN.getCell()) {
+						countX++;
+					} else if (DefaultGameTable.gameTable[l][i] == CellValue.EMPTY.getCell()) {
+						countE++;
+					}
+					for (int q = 0; q < 5; q++) {
+						if (countO == 4 && countE == 1) {]]></codefragment>
+   </duplication>
+   <duplication lines="33" tokens="117">
+      <file line="471"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <file line="550"
+            path="D:\eclips\Workspace\gomoky\src\main\java\devstudy\gomoky\impl\DefaultComputerTurn.java"/>
+      <codefragment><![CDATA[					 if (countX == 4 && countE == 1) {
+						if (DefaultGameTable.gameTable[i][j] == CellValue.EMPTY.getCell()) {
+							DefaultGameTable.gameTable[i][j] = CellValue.COMPUTER.getCell();
+							cells[i][j].setText(String.valueOf(DefaultGameTable.gameTable[i][j]));
+							return true;
+						}else{
+							i--;
+							j--;
+						}
+					 }
+					}
+					
+					count++;
+
+				
+				}
+			}
+			i0 -= q;
+			j0 -= q;
+			if (j0 > 0) {
+				j0--;
+				i1++;
+				q++;
+			} else {
+				i0++;
+				j1--;
+				q--;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean computerThreeSecondDiagonal(JLabel cells[][]) {]]></codefragment>
+   </duplication>
+</pmd-cpd>
