@@ -1,0 +1,74 @@
+CREATE TABLE account (
+  id INTEGER NOT NULL,
+  name VARCHAR(60) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  CONSTRAINT account_email_key UNIQUE(email),
+  CONSTRAINT account_pkey PRIMARY KEY(id)
+); 
+
+CREATE TABLE category (
+  id INTEGER NOT NULL,
+  name VARCHAR(60) NOT NULL,
+  url VARCHAR(60) NOT NULL,
+  product_count INTEGER DEFAULT 0 NOT NULL,
+  CONSTRAINT category_pkey PRIMARY KEY(id),
+  CONSTRAINT category_url_key UNIQUE(url)
+);
+
+CREATE TABLE order (
+  id BIGINT NOT NULL,
+  id_account INTEGER NOT NULL,
+  created TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT now() NOT NULL,
+  CONSTRAINT order_pkey PRIMARY KEY(id),
+  CONSTRAINT order_fk FOREIGN KEY (id_account)
+    REFERENCES public.account(id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
+    NOT DEFERRABLE
+);
+
+CREATE TABLE order_item (
+  id BIGINT NOT NULL,
+  id_order BIGINT NOT NULL,
+  id_product INTEGER NOT NULL,
+  count INTEGER NOT NULL,
+  CONSTRAINT order_item_pkey PRIMARY KEY(id),
+  CONSTRAINT order_item_fk FOREIGN KEY (id_order)
+    REFERENCES public."order"(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+    NOT DEFERRABLE,
+  CONSTRAINT order_item_fk1 FOREIGN KEY (id_product)
+    REFERENCES public.product(id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
+    NOT DEFERRABLE
+);
+
+CREATE TABLE producer (
+  id INTEGER NOT NULL,
+  name VARCHAR(60) NOT NULL,
+  product_count INTEGER DEFAULT 0 NOT NULL,
+  CONSTRAINT producer_pkey PRIMARY KEY(id)
+);
+
+CREATE TABLE product (
+  id INTEGER NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  image_link VARCHAR(255) NOT NULL,
+  price NUMERIC(8,2) NOT NULL,
+  id_category INTEGER NOT NULL,
+  id_producer INTEGER NOT NULL,
+  CONSTRAINT product_pkey PRIMARY KEY(id),
+  CONSTRAINT product_fk FOREIGN KEY (id_category)
+    REFERENCES public.category(id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
+    NOT DEFERRABLE,
+  CONSTRAINT product_fk1 FOREIGN KEY (id_producer)
+    REFERENCES public.producer(id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
+    NOT DEFERRABLE
+);
