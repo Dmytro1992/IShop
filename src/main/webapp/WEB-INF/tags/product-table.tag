@@ -26,10 +26,12 @@
 				<td class="hidden-print">
 				<c:choose>
 				<c:when test="${item.count > 1 }">
+					<a href="btn btn-danger add-one-product" data-id-product="${item.product.id }" data-count="1">Add one</a><br>
 					<a class="btn btn-danger remove-product" data-id-product="${item.product.id }" data-count="1">Remove one</a><br><br>
 					<a class="btn btn-danger remove-product remove-all" data-id-product="${item.product.id }" data-count="${item.count }">Remove all</a>
 				</c:when>
 				<c:otherwise>
+					<a href="btn btn-danger add-one-product" data-id-product="${item.product.id }" data-count="1">Add one</a><br>
 					<a class="btn btn-danger remove-product" data-id-product="${item.product.id }" data-count="1">Remove one</a>
 				</c:otherwise>
 				</c:choose>

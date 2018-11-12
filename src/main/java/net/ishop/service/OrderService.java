@@ -8,12 +8,9 @@ import net.ishop.model.CurrentAccount;
 import net.ishop.model.ShoppingCart;
 import net.ishop.model.SocialAccount;
 
-
 public interface OrderService {
 
 	void addProductToShoppingCart(ProductForm productForm, ShoppingCart shoppingCart);
-
-	void removeProductFromShoppingCart(ProductForm form, ShoppingCart shoppingCart);
 
 	String serializeShoppingCart(ShoppingCart shoppingCart);
 
@@ -28,4 +25,10 @@ public interface OrderService {
 	List<Order> listMyOrders(CurrentAccount currentAccount, int page, int limit);
 
 	int countMyOrders(CurrentAccount currentAccount);
+	
+	//hw
+	//remove one product from shopping cart
+	void removeProductFromShoppingCart(ProductForm form, ShoppingCart shoppingCart);
+	//add one product from shopping cart
+	void addOneProductToShoppingCart(ProductForm form, ShoppingCart shoppingCart);
 }

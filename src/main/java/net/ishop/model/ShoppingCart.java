@@ -22,7 +22,7 @@ public class ShoppingCart implements Serializable {
 		ShoppingCartItem shoppingCartItem = products.get(product.getId());
 		if (shoppingCartItem == null) {
 			validateProductCount(count);
-			shoppingCartItem = new ShoppingCartItem(product, count);
+			shoppingCartItem = new ShoppingCartItem(product, count); 
 			products.put(product.getId(), shoppingCartItem);
 		} else {
 			validateProductCount(count + shoppingCartItem.getCount());
@@ -30,7 +30,7 @@ public class ShoppingCart implements Serializable {
 		}
 		refreshStatistics();
 	}
-
+// delete one product  
 	public void removeProduct(Integer idProduct, int count) {
 		ShoppingCartItem shoppingCartItem = products.get(idProduct);
 		if (shoppingCartItem != null) {
@@ -42,6 +42,14 @@ public class ShoppingCart implements Serializable {
 			refreshStatistics();
 		}
 	}
+	// add count product
+	public void addCountProduct(Integer idProduct, int count) {
+		ShoppingCartItem shoppingCartItem = products.get(idProduct);
+		if (shoppingCartItem != null) {
+				shoppingCartItem.setCount(shoppingCartItem.getCount() + count);
+			} 
+			refreshStatistics();
+		}
 
 	public Collection<ShoppingCartItem> getItems() {
 		return products.values();

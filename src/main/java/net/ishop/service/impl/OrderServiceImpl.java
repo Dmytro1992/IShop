@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import net.ishop.entity.Account;
 import net.ishop.entity.Order;
@@ -29,8 +30,8 @@ import net.ishop.model.ShoppingCartItem;
 import net.ishop.model.SocialAccount;
 import net.ishop.service.OrderService;
 
-
-class OrderServiceImpl implements OrderService {
+@Service
+public class OrderServiceImpl implements OrderService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 	private static final ResultSetHandler<Product> productResultSetHandler = 
 			ResultSetHandlerFactory.getSingleResultSetHandler(ResultSetHandlerFactory.PRODUCT_RESULT_SET_HANDLER);
@@ -50,8 +51,8 @@ class OrderServiceImpl implements OrderService {
 	public OrderServiceImpl(DataSource dataSource) {
 		super();
 		this.dataSource = dataSource;
-	}
-	
+	} 
+	 
 	@Override
 	public void addProductToShoppingCart(ProductForm productForm, ShoppingCart shoppingCart) {
 		try (Connection c = dataSource.getConnection()) {
@@ -66,10 +67,6 @@ class OrderServiceImpl implements OrderService {
 		}
 	}
 	
-	@Override
-	public void removeProductFromShoppingCart(ProductForm form, ShoppingCart shoppingCart) {
-		shoppingCart.removeProduct(form.getIdProduct(), form.getCount());
-	}
 	
 	@Override
 	public String serializeShoppingCart(ShoppingCart shoppingCart) {
@@ -179,5 +176,16 @@ class OrderServiceImpl implements OrderService {
 		} catch (SQLException e) {
 			throw new InternalServerErrorException("Can't execute SQL request: " + e.getMessage(), e);
 		}
+	}
+
+	@Override
+	public void removeProductFromShoppingCart(ProductForm form, ShoppingCart shoppingCart) {
+		shoppingCart.removeProduct(form.getIdProduct(), form.getCount());
+	}
+	
+	@Override
+	public void addOneProductToShoppingCart(ProductForm form, ShoppingCart shoppingCart) {
+		shoppingCart.addCountProduct(form.getIdProduct(), form.getCount());
+		
 	}
 }

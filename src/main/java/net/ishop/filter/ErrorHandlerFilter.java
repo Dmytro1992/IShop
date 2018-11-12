@@ -20,7 +20,7 @@ import net.ishop.util.RoutingUtils;
 import net.ishop.util.UrlUtils;
 
 
-@WebFilter(filterName = "ErrorHandlerFilter")
+//@WebFilter(filterName = "ErrorHandlerFilter")
 public class ErrorHandlerFilter extends AbstractFilter {
 	private static final String INTERNAL_ERROR = "Internal error";
 

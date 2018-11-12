@@ -13,7 +13,7 @@ import net.ishop.service.ProductService;
 import net.ishop.service.impl.ServiceManager;
 
 /**
- * Example !!!! This filter is not working, because @WebFilter annotation is absent
+ * This filter is not working, because @WebFilter annotation is absent
  */
 public class CategoryProducerFilter extends AbstractFilter {
 

@@ -27,7 +27,7 @@ public class ServiceManager {
 		return instance;
 	}
 	public ProductService getProductService() {
-		return productService;
+		return productService; 
 	}
 	public OrderService getOrderService() {
 		return orderService;
@@ -59,7 +59,15 @@ public class ServiceManager {
 		socialService = new FacebookSocialService(this);
 	}
 	
-	private BasicDataSource createDataSource(){
+	public ServiceManager() {
+		loadApplicationProperties();
+		dataSource = createDataSource();
+		productService = new ProductServiceImpl(dataSource);
+		orderService = new OrderServiceImpl(dataSource);
+		socialService = new FacebookSocialService(this);
+	}
+	
+	public BasicDataSource createDataSource(){
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDefaultAutoCommit(false);
 		dataSource.setRollbackOnReturn(true);

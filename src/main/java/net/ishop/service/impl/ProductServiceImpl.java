@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import net.ishop.entity.Category;
 import net.ishop.entity.Producer;
@@ -21,8 +22,8 @@ import net.ishop.jdbc.ResultSetHandlerFactory;
 import net.ishop.jdbc.SearchQuery;
 import net.ishop.service.ProductService;
 
-
-class ProductServiceImpl implements ProductService {
+@Service
+public class ProductServiceImpl implements ProductService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
 	private static final ResultSetHandler<List<Product>> productsResultSetHandler = 
 			ResultSetHandlerFactory.getListResultSetHandler(ResultSetHandlerFactory.PRODUCT_RESULT_SET_HANDLER);
